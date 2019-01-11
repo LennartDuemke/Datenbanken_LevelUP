@@ -85,7 +85,7 @@ CREATE TABLE EINFUEHRUNG
 	( id decimal(5,0) NOT NULL
 	, datum date NOT NULL
 	, preis decimal(4,2)
-	, gewicht decimal(3,1)
+	, gewicht decimal(4,1)
 	, bmi decimal(2,0)
 	, koerperfett decimal(2,0)
 	, mitgliedschaft_id decimal(5,0) NOT NULL
@@ -116,7 +116,7 @@ CREATE TABLE MITGLIEDSCHAFT
 	( id decimal(5,0) NOT NULL
 	, beitritt date NOT NULL
 	, austritt date 
-	, zahlungsart varchar(50)
+	, zahlungsart varchar(50) NOT NULL
 	, kunde_id decimal(5,0) NOT NULL
 );
 
@@ -472,7 +472,7 @@ VALUES(8, 'Frau', 'Schmidt', 'Hilde', '1947-08-30', null, '0571254545', 'Schwieg
 INSERT INTO KUNDE (id, anrede, name, vorname, geburtsdatum, email, telefon, notiz)
 VALUES(9, 'Frau', 'Großer', 'Michelle', '1998-04-17', 'Michi17@gmail.com', '015754429887', null);
 INSERT INTO KUNDE (id, anrede, name, vorname, geburtsdatum, email, telefon, notiz)
-VALUES(10, 'Frau', 'Großer', 'Miriam', '1999-02-29', 'Miriam999@aol.com', '0164245529', null);
+VALUES(10, 'Frau', 'Großer', 'Miriam', '1999-02-15', 'Miriam999@aol.com', '0164245529', null);
 
 /* 2. ANGESTELLTER */
 
@@ -481,7 +481,7 @@ VALUES(1, 'Herr', 'Rösner', 'Harrald', '1968-01-31', 'Harrald.Roesner@gmail.com
 INSERT INTO ANGESTELLTER (id, anrede, name, vorname, geburtsdatum, email, telefon, stundenlohn, wochenarbeitszeit, einstellungsdatum, notiz)
 VALUES(2, 'Herr', 'Morillio Mendoza', 'Viktor', '1984-06-25', 'Morillio@gmail.com', '015756690342', 13.10, 35, '2010-02-01', null);
 INSERT INTO ANGESTELLTER (id, anrede, name, vorname, geburtsdatum, email, telefon, stundenlohn, wochenarbeitszeit, einstellungsdatum, notiz)
-VALUES(3, 'Frau', 'Hagen', 'Jasmin', '1987-02-29', 'Jasmin97@aol.com', '05716442990', 13.50, 38, '2010-12-10', null);
+VALUES(3, 'Frau', 'Hagen', 'Jasmin', '1987-02-12', 'Jasmin97@aol.com', '05716442990', 13.50, 38, '2010-12-10', null);
 INSERT INTO ANGESTELLTER (id, anrede, name, vorname, geburtsdatum, email, telefon, stundenlohn, wochenarbeitszeit, einstellungsdatum, notiz)
 VALUES(4, 'Frau', 'Dudai', 'Birgit', '1975-05-18', 'Duda75@t-online.de', '05719823114', 12.00, 20, '2010-11-15', null);
 INSERT INTO ANGESTELLTER (id, anrede, name, vorname, geburtsdatum, email, telefon, stundenlohn, wochenarbeitszeit, einstellungsdatum, notiz)
@@ -638,31 +638,31 @@ VALUES(7, 1);
 
 /* 8. MITGLIEDSCHAFT */
 
-INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id,)
+INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id)
 VALUES(1, '2010-02-01', '2016-05-01', 'Lastschrift', 1);
-INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id,)
+INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id)
 VALUES(2, '2010-02-01', '2012-02-01', 'Rechnung', 2);
-INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id,)
+INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id)
 VALUES(3, '2010-02-01', null, 'Lastschrift', 3);
-INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id,)
+INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id)
 VALUES(4, '2013-10-01', '2015-10-01', 'Rechnung', 2);
-INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id,)
+INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id)
 VALUES(5, '2015-02-01', null, 'Lastschrift', 4);
-INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id,)
+INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id)
 VALUES(6, '2015-02-01', null, 'Lastschrift', 5);
-INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id,)
+INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id)
 VALUES(7, '2016-09-01', null, 'Rechnung', 8);
-INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id,)
+INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id)
 VALUES(8, '2015-02-01', null, 'PayPal', 7);
-INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id,)
+INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id)
 VALUES(9, '2017-03-01', null, 'Lastschrift', 9);
-INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id,)
+INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id)
 VALUES(10, '2018-01-01', null, 'Rechnung', 2);
-INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id,)
+INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id)
 VALUES(11, '2018-03-01', null, 'Lastschrift', 10);
-INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id,)
+INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id)
 VALUES(12, '2018-03-01', null, 'Lastschrift', 6);
-INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id,)
+INSERT INTO MITGLIEDSCHAFT (id, beitritt, austritt, zahlungsart, kunde_id)
 VALUES(13, '2017-12-01', null, 'Lastschrift', 1);
 
 /* 9. AKTION */
@@ -805,8 +805,32 @@ VALUES(10, 'Rückengymnastik', '2018-04-03', '2018-05-23', 'Halle', 8);
 INSERT INTO KURS (id, typ, beginn, ende, raum, terminanzahl)
 VALUES(11, 'Beckenbodengymnastik', '2018-04-05', '2018-06-21', 'Spiegelsaal', 12);
 
+/* 18. ANGESTELLTER_KURS */
 
-/* 18. REHA_INFO */
+INSERT INTO ANGESTELLTER_KURS (angestellter_id, kurs_id)
+VALUES(3, 1);
+INSERT INTO ANGESTELLTER_KURS (angestellter_id, kurs_id)
+VALUES(2, 2);
+INSERT INTO ANGESTELLTER_KURS (angestellter_id, kurs_id)
+VALUES(3, 3);
+INSERT INTO ANGESTELLTER_KURS (angestellter_id, kurs_id)
+VALUES(3, 4);
+INSERT INTO ANGESTELLTER_KURS (angestellter_id, kurs_id)
+VALUES(6, 5);
+INSERT INTO ANGESTELLTER_KURS (angestellter_id, kurs_id)
+VALUES(7, 6);
+INSERT INTO ANGESTELLTER_KURS (angestellter_id, kurs_id)
+VALUES(9, 7);
+INSERT INTO ANGESTELLTER_KURS (angestellter_id, kurs_id)
+VALUES(6, 8);
+INSERT INTO ANGESTELLTER_KURS (angestellter_id, kurs_id)
+VALUES(9, 9);
+INSERT INTO ANGESTELLTER_KURS (angestellter_id, kurs_id)
+VALUES(1, 10);
+INSERT INTO ANGESTELLTER_KURS (angestellter_id, kurs_id)
+VALUES(3, 11);
+
+/* 19. REHA_INFO */
 
 INSERT INTO REHA_INFO (id, zahlung, krankenkasse, belastbarkeit, notiz, kurs_id, mitgliedschaft_id)
 VALUES(1, 'Krankenkasse', 'Techniker', '75 Watt', 'Hausarzt Dr. Rüdiger, Herzinfarkt 06-06-2016', 9, 13);
@@ -820,7 +844,7 @@ INSERT INTO REHA_INFO (id, zahlung, krankenkasse, belastbarkeit, notiz, kurs_id,
 VALUES(5, 'Krankenkasse', 'AOK', null, 'Hausarzt Dr. Hill', 11, 7);
 
 
-/* 19. BASISTRAINING */
+/* 20. BASISTRAINING */
 
 INSERT INTO BASISTRAINING (id, beginn, mindestlaufzeit, kuendigungsfrist, kuendigung, getraenk, notiz, angestellter_id)
 VALUES(1, '2010-02-01', 6, 1, '2015-12-15', null, null, 1);
@@ -846,7 +870,7 @@ INSERT INTO BASISTRAINING (id, beginn, mindestlaufzeit, kuendigungsfrist, kuendi
 VALUES(11, '2018-03-01', 12, 2, null, null, null, 9);
 
 
-/* 20. FITNESSGERAET */
+/* 21. FITNESSGERAET */
 
 INSERT INTO FITNESSGERAET (id, typ, firma, name, quadratmeter, kaufdatum, wartung, ausgemustert, notiz)
 VALUES(1, 'Laufband', 'emotion fitness GmbH & Co. KG', 'Motion Sprint 300', 3.0, '2010-03-20', '2012-04-23', 'j', 'reparaturanfällig');
@@ -883,7 +907,7 @@ VALUES(16, 'Bizepsgerät', 'gym80 International GmbH', 'Pure Kraft Bizepsgerät'
 INSERT INTO FITNESSGERAET (id, typ, firma, name, quadratmeter, kaufdatum, wartung, ausgemustert, notiz)
 VALUES(17, 'Crosstrainer', 'Intenza Fitness GmbH', 'Crosstrainer 550ETi', 3.5, '2018-04-08', null, null, null);
 
-/* 21. UEBUNG */
+/* 22. UEBUNG */
 
 INSERT INTO UEBUNG (id, datum, beschreibung, gewicht, anzahl, wiederholung, fitnessgeraet_id, basistraining_id)
 VALUES(1, '2018-09-04', '10 Minuten 80 Watt', null, null, null, 3, 3);
@@ -913,7 +937,7 @@ INSERT INTO UEBUNG (id, datum, beschreibung, gewicht, anzahl, wiederholung, fitn
 VALUES(13, '2018-03-01', null, 10.0, 10, 3, 16, 7);
 
 
-/* 22. VERTRAG */
+/* 23. VERTRAG */
 
 INSERT INTO VERTRAG (id, preis, rabatt, notiz, mitgliedschaft_id, sauna_id, basistraining_id, kurs_id)
 VALUES(1, 38.00, null, null, 1, null, 1, null);
