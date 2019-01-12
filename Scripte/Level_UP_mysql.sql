@@ -520,7 +520,7 @@ VALUES(9, 'Hausmeister', null);
 INSERT INTO FUNKTION (id, funktion, notiz)
 VALUES(10, 'Reinigungskraft', null);
 INSERT INTO FUNKTION (id, funktion, notiz)
-VALUES(11, 'Sekretärin', null);
+VALUES(11, 'Sekretär', null);
 
 /* 4. ANGESTELLTER_FUNKTION */
 
