@@ -1,0 +1,66 @@
+Kunden suchen, die nach dem Kunden mit dem Namen 'Hilde Schmidt' beigetreten sind:
+
+select vorname, name
+ from KUNDE join MITGLIEDSCHAFT
+ on KUNDE.id = MITGLIEDSCHAFT.kunde_id
+ where (MITGLIEDSCHAFT.beitritt > (SELET MITGLIEDSCHAFT.beitritt from MITGLIEDSCHAFT
+	where kunde_id=(SELECT id from KUNDE where name='Schmidt and vorname='Hilde')));
+
+
+Kunden suchen, die an einem Kurs namens "Gewichtreduktion" teilnehmen:
+
+select KUNDE.vorname, KUNDE.name
+ from KUNDE join VERTRAG join MITGLIEDSCHAFT
+ on KUNDE.id=MITGLIEDSCHAFT.kunde_id and MITGLIEDSCHAFT.id=VERTRAG.mitgliedschaft_id
+ where VERTRAG.kurs_id=(SELECT id from KURS where typ='Gewichtsreduktion');
+
+
+Vorname und Name aller Kunden, die von dem Angestellten mit dem Vornamen Viktor eine Einführung erhalten haben
+
+select vorname, name from KUNDE where id in(
+	select kunde_id from MITGLIEDSCHAFT where id in (
+		select mitgliedschaft_id from EINFUEHRUNG where angestellter_id in (
+			select id from ANGESTELLTER where vorname = 'Viktor')));
+
+
+Welcher Angestellte hat wieviele Einführungen gegeben
+
+SELECT 
+    COUNT(*), ANGESTELLTER.NAME
+FROM
+    KUNDE
+        JOIN
+    MITGLIEDSCHAFT ON KUNDE.id = MITGLIEDSCHAFT.kunde_id
+        JOIN
+    EINFUEHRUNG ON MITGLIEDSCHAFT.id = EINFUEHRUNG.mitgliedschaft_id
+        JOIN
+    ANGESTELLTER ON ANGESTELLTER.ID = EINFUEHRUNG.angestellter_id
+GROUP BY ANGESTELLTER.NAME;
+
+
+//Alle Getränketypen, die vor dem Jahr 2018 per Lastschrift bezahlt wurden
+
+select typ from GETRAENK WHERE id IN (
+    select getraenk_id from KAUF where mitgliedschaft_id IN(
+        select id from MITGLIEDSCHAFT where zahlungsart = 'Lastschrift'
+    )
+    AND EXTRACT(YEAR FROM kauf) < 2018);
+
+
+
+//Anzeige, wieviele Funktion ein Angesteller hat, der mindestens zwei Funktionen hat
+
+select COUNT(FUNKTION.funktion), ANGESTELLTER.name 
+from FUNKTION JOIN ANGESTELLTER_FUNKTION ON FUNKTION.id = ANGESTELLTER_FUNKTION.funktion_id
+JOIN ANGESTELLTER ON ANGESTELLTER.id = ANGESTELLTER_FUNKTION.angestellter_id
+GROUP BY ANGESTELLTER.name
+HAVING COUNT(FUNKTION.funktion) > 1;
+
+
+
+
+
+
+
+
+
