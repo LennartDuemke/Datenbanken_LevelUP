@@ -13,6 +13,30 @@ select KUNDE.vorname, KUNDE.name
  from KUNDE join VERTRAG join MITGLIEDSCHAFT
  on KUNDE.id=MITGLIEDSCHAFT.kunde_id and MITGLIEDSCHAFT.id=VERTRAG.mitgliedschaft_id
  where VERTRAG.kurs_id=(SELECT id from KURS where typ='Gewichtsreduktion');
+ 
+ 
+ Alle Verkäufe über 5 Euro suchen:
+
+select KAUF.id as KAUF_Id, KUNDE.name, KUNDE.vorname
+ from KAUF join MITGLIEDSCHAFT join KUNDE
+ on MITGLIEDSCHAFT.kunde_id=KUNDE.id and KAUF.mitgliedschaft_id=MITGLIEDSCHAFT.id
+ where (getraenk_id is not null and (select preis from GETRAENK where GETRAENK.id=getraenk_id)>5) or (sportler_nahrung_id is not null and (select preis from SPORTLER_NAHRUNG where SPORTLER_NAHRUNG.id=sportler_nahrung_id)>5);
+
+
+Auflistung welcher Kunde wie viele Produkte gekauft hat:
+
+select KAUF.mitgliedschaft_id, KUNDE.name, KUNDE.vorname, count(KAUF.mitgliedschaft_id) as Anzahl
+ from KAUF join KUNDE join MITGLIEDSCHAFT
+ on KUNDE.id=MITGLIEDSCHAFT.kunde_id and KAUF.mitgliedschaft_id = MITGLIEDSCHAFT.id
+ group by KAUF.mitgliedschaft_id;
+
+
+Auflistung welcher Angestellter wie viele Basistrainings leitet:
+
+select ANGESTELLTER.name, count(angestellter_id) as Anzahl
+ from ANGESTELLTER join BASISTRAINING
+ on ANGESTELLTER.id=BASISTRAINING.angestellter_id
+ group by ANGESTELLTER.name;
 
 
 Vorname und Name aller Kunden, die von dem Angestellten mit dem Vornamen Viktor eine Einführung erhalten haben
