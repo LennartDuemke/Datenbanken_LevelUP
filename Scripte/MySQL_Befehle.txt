@@ -83,7 +83,35 @@ HAVING COUNT(FUNKTION.funktion) > 1;
 
 
 
+Durchschnittlicher Stundenlohn:
+SELECT AVG(ANGESTELLTER.stundenlohn) AS Durchschnittsstundenlohn FROM ANGESTELLTER WHERE ANGESTELLTER.stundenlohn IS NOT NULL;
 
+Adresse des Angestellten mit dem Nachnamen Walter:
+SELECT ADRESSE.straße, ADRESSE.haus_nr, ADRESSE.plz, ADRESSE.ort FROM ANGESTELLTER JOIN ANGESTELLTER_ADRESSE ON ANGESTELLTER.id =ANGESTELLTER_ADRESSE.angestellter_id JOIN ADRESSE ON ANGESTELLTER_ADRESSE.adresse_id = ADRESSE.id WHERE ANGESTELLTER.name = "Walter";
+
+Die Arten der Fitnessgeräte, die der Kunde mit der ID 6 benutzt. 
+SELECT DISTINCT FITNESSGERAET.typ FROM KUNDE JOIN MITGLIEDSCHAFT ON MITGLIEDSCHAFT.kunde_id = KUNDE.id JOIN VERTRAG ON VERTRAG.mitgliedschaft_id = MITGLIEDSCHAFT.id JOIN BASISTRAINING ON VERTRAG.basistraining_id = BASISTRAINING.id JOIN UEBUNG ON UEBUNG.basistraining_id = BASISTRAINING.id JOIN FITNESSGERAET ON FITNESSGERAET.id = UEBUNG.fitnessgeraet_id WHERE KUNDE.id = 6;
+
+Anzahl der Kunden, die einen Sauna Vertrag haben:
+SELECT COUNT(SAUNA.id) Anzahl_Saunaverträge FROM KUNDE JOIN MITGLIEDSCHAFT ON MITGLIEDSCHAFT.kunde_id = KUNDE.id JOIN VERTRAG ON VERTRAG.mitgliedschaft_id = MITGLIEDSCHAFT.id JOIN SAUNA ON SAUNA.id = VERTRAG.sauna_id;
+
+Anzahl der Mitglieder:
+SELECT COUNT(KUNDE.id) AS Anzahl_Mitglieder FROM KUNDE;
+
+Alle unverkauften Getränke und Nahrungsmittel:
+(SELECT GETRAENK.typ FROM KAUF RIGHT OUTER JOIN GETRAENK ON KAUF.getraenk_id = GETRAENK.id WHERE KAUF.id IS NULL) UNION (SELECT SPORTLER_NAHRUNG.typ FROM KAUF RIGHT OUTER JOIN SPORTLER_NAHRUNG ON KAUF.sportler_nahrung_id = SPORTLER_NAHRUNG.id WHERE KAUF.id IS NULL);
+
+Anzahl der Mitgliedschaften, die durch eine Aktion entstanden sind:
+SELECT (SELECT COUNT(MITGLIEDSCHAFT.id) FROM MITGLIEDSCHAFT JOIN MITGLIEDSCHAFT_AKTION ON MITGLIEDSCHAFT_AKTION.mitgliedschaft_id = MITGLIEDSCHAFT.id JOIN AKTION ON AKTION.id = MITGLIEDSCHAFT_AKTION.aktion_id)/(SELECT COUNT(MITGLIEDSCHAFT.id) FROM MITGLIEDSCHAFT)*100 AS Aktionsmitgliedschaften_in_Prozent;
+
+Welche Übungen macht die Person mit dem Namen "Ulla Tischbein" ?
+SELECT DISTINCT UEBUNG.beschreibung FROM KUNDE JOIN MITGLIEDSCHAFT ON MITGLIEDSCHAFT.kunde_id = KUNDE.id JOIN VERTRAG ON VERTRAG.mitgliedschaft_id = MITGLIEDSCHAFT.id JOIN BASISTRAINING ON BASISTRAINING.id = VERTRAG.basistraining_id JOIN ANGESTELLTER ON ANGESTELLTER.id = BASISTRAINING.angestellter_id JOIN UEBUNG ON UEBUNG.basistraining_id = BASISTRAINING.id WHERE (KUNDE.vorname, KUNDE.name) = ("Ulla", "Tischbein") AND UEBUNG.beschreibung IS NOT NULL;
+
+Name des Angestellten, der die meisten Einführungen durchgeführt hat und die Anzahl der Einführungen:
+SELECT A.Angestellter_Name, A.Anzahl FROM (SELECT CONCAT(ANGESTELLTER.vorname, " ", ANGESTELLTER.name) AS Angestellter_Name, COUNT(ANGESTELLTER.id) Anzahl FROM ANGESTELLTER JOIN EINFUEHRUNG ON EINFUEHRUNG.angestellter_id = ANGESTELLTER.id GROUP BY ANGESTELLTER.id) AS A WHERE A.Anzahl = (SELECT MAX(B.Anzahl) FROM (SELECT ANGESTELLTER.id AS Angestellter_ID, COUNT(ANGESTELLTER.id) Anzahl FROM ANGESTELLTER JOIN EINFUEHRUNG ON EINFUEHRUNG.angestellter_id = ANGESTELLTER.id GROUP BY ANGESTELLTER.id) AS B);
+
+Alle Kunden, die an der Adresse von Aischa Aslan wohnen:
+SELECT * FROM KUNDE JOIN KUNDE_ADRESSE ON KUNDE_ADRESSE.kunde_id = KUNDE.id JOIN ADRESSE ON ADRESSE.ID = KUNDE_ADRESSE.adresse_id WHERE (ADRESSE.straße, ADRESSE.haus_nr, ADRESSE.plz, ADRESSE.ort) = (SELECT ADRESSE.straße, ADRESSE.haus_nr, ADRESSE.plz, ADRESSE.ort FROM KUNDE JOIN KUNDE_ADRESSE ON KUNDE_ADRESSE.kunde_id = KUNDE.id JOIN ADRESSE ON ADRESSE.ID = KUNDE_ADRESSE.adresse_id WHERE KUNDE.name = "Aslan" AND KUNDE.vorname = "Aischa");
 
 
 
