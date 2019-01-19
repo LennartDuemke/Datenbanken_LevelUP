@@ -3,8 +3,8 @@ Kunden suchen, die nach dem Kunden mit dem Namen 'Hilde Schmidt' beigetreten sin
 select vorname, name
  from KUNDE join MITGLIEDSCHAFT
  on KUNDE.id = MITGLIEDSCHAFT.kunde_id
- where (MITGLIEDSCHAFT.beitritt > (SELET MITGLIEDSCHAFT.beitritt from MITGLIEDSCHAFT
-	where kunde_id=(SELECT id from KUNDE where name='Schmidt and vorname='Hilde')));
+ where (MITGLIEDSCHAFT.beitritt > (SELECT MITGLIEDSCHAFT.beitritt from MITGLIEDSCHAFT
+	where kunde_id=(SELECT id from KUNDE where name='Schmidt' and vorname='Hilde')));
 
 
 Kunden suchen, die an einem Kurs namens "Gewichtreduktion" teilnehmen:
