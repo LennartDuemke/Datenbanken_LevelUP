@@ -57,7 +57,7 @@ CREATE TABLE FUNKTION
 
 CREATE TABLE ADRESSE
 	( id number(5) NOT NULL
-	, straße varchar2(50) NOT NULL
+	, strasse varchar2(50) NOT NULL
 	, haus_nr varchar2(10) NOT NULL
 	, plz number(5) NOT NULL
 	, ort varchar2(50)
@@ -590,42 +590,42 @@ VALUES(10, 9);
 
 /* 5. ADRESSE */
 
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
-VALUES(1, 'Zeugstraße', '11a', 32427, 'Minden');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
+VALUES(1, 'Zeugstrasse', '11a', 32427, 'Minden');
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
 VALUES(2, 'Bergweg', '3', 32427, 'Minden');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
 VALUES(3, 'Am Denkmal', '20', 32457, 'Porta Westfalica');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
 VALUES(4, 'Melittaweg', '4', 32427, 'Minden');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
 VALUES(5, 'Am Museum', '22', 32427, 'Minden');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
 VALUES(6, 'Berghof', '8', 32457, 'Porta WestfalicaMinden');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
-VALUES(7, 'Rathausstraße', '28', 32427, 'Minden');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
+VALUES(7, 'Rathausstrasse', '28', 32427, 'Minden');
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
 VALUES(8, 'Zwinger', '59', 32602, 'Vlotho');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
-VALUES(9, 'Ratstraße', '32', 32428, 'Minden');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
-VALUES(10, 'Schulstraße', '9', 32427, 'Minden');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
+VALUES(9, 'Ratstrasse', '32', 32428, 'Minden');
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
+VALUES(10, 'Schulstrasse', '9', 32427, 'Minden');
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
 VALUES(12, 'Schnurrviertel', '60', 32427, 'Minden');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
 VALUES(13, 'Altstadt', '6', 32429, 'Minden');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
-VALUES(14, 'Domstraße', '1c', 32428, 'Minden');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
+VALUES(14, 'Domstrasse', '1c', 32428, 'Minden');
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
 VALUES(15, 'Ahornweg', '11', 32469, 'Petershagen');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
 VALUES(16, 'Oeynhausenerweg', '6', 32545, 'Bad Oeynhausen');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
 VALUES(17, 'An der Schleuse', '34', 32427, 'Minden');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
-VALUES(19, 'Marktstraße', '17', 32429, 'Minden');
-INSERT INTO ADRESSE (id, straße, haus_nr, plz, ort)
-VALUES(20, 'Bäderstraße', '29', 32545, 'Bad Oeynhausen');
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
+VALUES(19, 'Marktstrasse', '17', 32429, 'Minden');
+INSERT INTO ADRESSE (id, strasse, haus_nr, plz, ort)
+VALUES(20, 'Bäderstrasse', '29', 32545, 'Bad Oeynhausen');
 
 /* 6. ANGESTELLTER_ADRESSE */
 
